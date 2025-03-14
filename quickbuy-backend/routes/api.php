@@ -11,7 +11,7 @@ use App\Http\Controllers\AuthController;
 
 use App\Http\Middleware\RoleMiddleware;
 
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\RegisterController;
 
 //Admin Routes -> http://127.0.0.1:8000/api/admin
 Route::prefix('admin')
@@ -47,3 +47,11 @@ POST /api/login/customer → For Customer Login
 */ 
 Route::post('/login/{role}', [AuthController::class, 'login'])->where('role', 'admin|seller|customer');
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
+//Register Routes
+/*
+POST /api/register/seller → For Seller Login
+POST /api/register/customer → For Customer Login
+*/
+Route::post('/register/customer', [RegisterController::class, 'registerCustomer']);
+Route::post('/register/seller', [RegisterController::class, 'registerSeller']);

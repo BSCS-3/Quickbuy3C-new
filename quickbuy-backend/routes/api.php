@@ -24,18 +24,18 @@ Route::prefix('admin')
 
 // Seller Routes
 Route::prefix('seller')
-    ->middleware(['auth:sanctum', RoleMiddleware::class.':admin'])
-    ->controller(AdminController::class)
+    ->middleware(['auth:sanctum', RoleMiddleware::class.':seller'])
+    ->controller(SellerController::class)
     ->group(function () {
-        Route::get('/', 'hello');
+        
     });
 
 // Customer Routes
 Route::prefix('customer')
-    ->middleware(['auth:sanctum', RoleMiddleware::class.':admin'])
-    ->controller(AdminController::class)
+    ->middleware(['auth:sanctum', RoleMiddleware::class.':customer'])
+    ->controller(CustomerController::class)
     ->group(function () {
-        Route::get('/', 'hello');
+        
     });
 
 

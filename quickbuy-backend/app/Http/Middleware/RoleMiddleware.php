@@ -18,8 +18,6 @@ class RoleMiddleware
 
     public function handle(Request $request, Closure $next, $requiredRole): Response
     {
-        dump("This is a debug message");
-
         $user = $request->user(); // Get authenticated user
 
         if (!$user || !$user->roles()->exists()) {

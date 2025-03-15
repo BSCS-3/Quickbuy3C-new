@@ -18,7 +18,7 @@ Route::prefix('admin')
     ->middleware(['auth:sanctum', RoleMiddleware::class.':admin'])
     ->controller(AdminController::class)
     ->group(function () {
-        Route::get('/', 'hello');
+        
     });
 
 
@@ -55,3 +55,10 @@ POST /api/register/customer → For Customer Login
 */
 Route::post('/register/customer', [RegisterController::class, 'registerCustomer']);
 Route::post('/register/seller', [RegisterController::class, 'registerSeller']);
+
+//Health Checks
+Route::prefix('/health')->group(function (){
+    Route::get('/admin', [AdminController::class, 'checkHealth']);
+    Route::get('/customer', [CustomerController::class, 'checkHealth']);
+    Route::get('/seller', [SellerController::class, 'checkHealth']);
+});

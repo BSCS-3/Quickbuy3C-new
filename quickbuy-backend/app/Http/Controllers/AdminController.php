@@ -8,10 +8,9 @@ use App\Http\Middleware\RoleMiddleware;
 
 class AdminController extends Controller
 {
-    public function hello(Request $request){
+    public function checkHealth(){
         return response()->json([
-            "message"=>"Hello!",
-            "user"=>$request->user()
-        ], 200);
+            "message" => "working"
+        ]);
     }
 }
